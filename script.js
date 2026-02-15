@@ -1,45 +1,51 @@
-// Danh sách ảnh dùng cho bóng bay
 const imageList = [
-    "images/anh1.jpg",
-    "images/anh2.jpg",
-    "images/anh3.jpg"
+    "anh1.jpg",
+    "anh2.jpg",
+    "anh3.jpg"
 ];
 
-// Khu vực bóng bay (ở giữa thiệp)
 const balloonZone = document.getElementById("balloonZone");
+const BALLOON_WIDTH = 200;
 
-// Hàm tạo 1 quả bóng bay
+// TẠO BÓNG
 function createBalloon() {
-    // Tạo div bóng
     const balloon = document.createElement("div");
     balloon.className = "balloon";
 
-    // Tạo ảnh trong bóng
     const img = document.createElement("img");
-    img.src = imageList[Math.floor(Math.random() * imageList.length)];
+    const src = imageList[Math.floor(Math.random() * imageList.length)];
+    img.src = src;
 
-    // Vị trí ngẫu nhiên trong balloon-zone
-    const zoneWidth = balloonZone.clientWidth;
-    const balloonWidth = 140; // phải khớp với CSS
-    const maxLeft = zoneWidth - balloonWidth;
+    img.onload = () => {
+        const zoneWidth = balloonZone.clientWidth;
+        const maxLeft = zoneWidth - BALLOON_WIDTH;
 
-    balloon.style.left = Math.random() * maxLeft + "px";
+        balloon.style.left = Math.random() * maxLeft + "px";
+        balloon.style.animationDuration = (8 + Math.random() * 3) + "s";
 
-    // Thời gian bay ngẫu nhiên (mượt hơn)
-    const duration = 5 + Math.random() * 2;
-    balloon.style.animationDuration = duration + "s";
+        balloon.appendChild(img);
+        balloonZone.appendChild(balloon);
 
-    // Gắn ảnh vào bóng
-    balloon.appendChild(img);
+        // CLICK → PHÓNG TO
+        balloon.onclick = () => zoomImage(src);
 
-    // Gắn bóng vào khu vực
-    balloonZone.appendChild(balloon);
-
-    // Xóa bóng sau khi bay xong (tránh lag)
-    setTimeout(() => {
-        balloon.remove();
-    }, duration * 1000);
+        setTimeout(() => balloon.remove(), 11000);
+    };
 }
 
-// Tạo bóng bay liên tục
-setInterval(createBalloon, 900);
+// PHÓNG TO ẢNH
+function zoomImage(src) {
+    const overlay = document.createElement("div");
+    overlay.className = "zoom";
+
+    const img = document.createElement("img");
+    img.src = src;
+
+    overlay.appendChild(img);
+    document.body.appendChild(overlay);
+
+    overlay.onclick = () => overlay.remove();
+}
+
+// GIẢM TẦN SUẤT
+setInterval(createBalloon, 2200);
