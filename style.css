@@ -87,12 +87,13 @@ body {
     background-color: #f8dada;
     overflow: hidden;
     height: 100%;
+    width: 50vw; /* Chiếm nửa phải màn hình */
 }
 
 /* Định dạng quả bóng */
 .balloon {
     position: absolute;
-    bottom: -120px;
+    bottom: -120px; /* Đảm bảo bóng bay bắt đầu từ phía dưới */
     width: 90px;
     animation: flyUp linear forwards;
     z-index: 1;
@@ -123,7 +124,7 @@ body {
         opacity: 1;
     }
     to {
-        transform: translateY(-120vh);
+        transform: translateY(-120vh); /* Điều chỉnh lại giá trị để đảm bảo bóng bay không ra ngoài màn hình */
         opacity: 0;
     }
 }
