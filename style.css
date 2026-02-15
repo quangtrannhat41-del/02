@@ -8,36 +8,40 @@ body {
     background: linear-gradient(135deg, #ffe0ec, #fff7fb);
     min-height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-/* CĂN GIỮA */
+/* Tấm thiệp */
 .wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-/* TẤM THIỆP */
+/* Tấm thiệp chúc mừng */
 .card {
-    width: 900px;
+    width: 100%;
+    max-width: 900px;
     height: 420px;
     background: #fff;
     border-radius: 20px;
     display: flex;
+    flex-direction: row;
     padding: 30px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    position: relative;
 }
 
-/* NỘI DUNG TRÁI */
+/* Nội dung tấm thiệp bên trái */
 .content {
     flex: 1;
     padding-right: 20px;
 }
 
 .content h1 {
-    font-size: 52px;
+    font-size: 32px;
     color: #ff6b9d;
     margin: 0 0 10px;
 }
@@ -58,23 +62,23 @@ body {
     color: #555;
 }
 
-/* KHU BÓNG BAY */
+/* Khu vực chứa bóng bay */
 .balloon-zone {
     flex: 1;
     position: relative;
     overflow: visible;
 }
 
-/* BÓNG BAY */
+/* Bóng bay */
 .balloon {
     position: absolute;
     bottom: -120px;
-    width: 220px;
+    width: 150px;
     z-index: 10;
-    animation: flyUp linear forwards, sway 4s ease-in-out infinite;
+    animation: flyUp linear forwards;
 }
 
-/* ẢNH TRONG BÓNG */
+/* Ảnh trong bóng bay */
 .balloon img {
     width: 100%;
     border-radius: 50%;
@@ -82,26 +86,19 @@ body {
     background: white;
 }
 
-/* BAY LÊN */
+/* Hiệu ứng bay lên */
 @keyframes flyUp {
     from {
         transform: translateY(0);
         opacity: 1;
     }
     to {
-        transform: translateY(-520px);
+        transform: translateY(-500px);
         opacity: 0;
     }
 }
 
-/* LẮC LƯ */
-@keyframes sway {
-    0% { transform: translateX(0); }
-    50% { transform: translateX(15px); }
-    100% { transform: translateX(0); }
-}
-
-/* ZOOM ẢNH */
+/* Phóng to ảnh */
 .zoom {
     position: fixed;
     inset: 0;
@@ -116,4 +113,22 @@ body {
     max-width: 80%;
     max-height: 80%;
     border-radius: 20px;
+}
+
+/* Responsive: Thẻ nằm ngang trên điện thoại */
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    .content h1 {
+        font-size: 28px;
+    }
+
+    .balloon-zone {
+        width: 100%;
+        height: 100%;
+    }
 }
