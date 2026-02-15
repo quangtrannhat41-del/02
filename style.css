@@ -10,7 +10,7 @@ body {
     overflow: hidden;
 }
 
-/* Container chia màn hình */
+/* Container chia màn hình thành hai phần */
 .container {
     display: flex;
     height: 100vh;
@@ -80,20 +80,22 @@ body {
     color: #d94f4f;
 }
 
-/* Balloons */
+/* Phần Balloons - Phía bên phải */
 #balloons {
     flex: 1;
     position: relative;
     background-color: #f8dada;
     overflow: hidden;
+    height: 100%;
 }
 
 /* Định dạng quả bóng */
 .balloon {
     position: absolute;
-    bottom: -200px;
+    bottom: -120px;
     width: 90px;
     animation: flyUp linear forwards;
+    z-index: 1;
 }
 
 .balloon img {
@@ -114,6 +116,7 @@ body {
     margin: auto;
 }
 
+/* Animation cho bóng bay */
 @keyframes flyUp {
     from {
         transform: translateY(0);
