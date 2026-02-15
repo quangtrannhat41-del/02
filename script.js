@@ -1,26 +1,45 @@
-// Đường dẫn đến hình ảnh duy nhất cho tất cả các quả bóng bay
-const balloonImage = "images/anh1.jpg";  // Thay "image1.jpg" thành "anh1.jpg"
+// Danh sách ảnh dùng cho bóng bay
+const imageList = [
+    "images/anh1.jpg",
+    "images/anh2.jpg",
+    "images/anh3.jpg"
+];
 
+// Khu vực bóng bay (ở giữa thiệp)
+const balloonZone = document.getElementById("balloonZone");
+
+// Hàm tạo 1 quả bóng bay
 function createBalloon() {
+    // Tạo div bóng
     const balloon = document.createElement("div");
     balloon.className = "balloon";
 
+    // Tạo ảnh trong bóng
     const img = document.createElement("img");
-    img.src = balloonImage;  // Sử dụng hình ảnh duy nhất cho tất cả bóng bay
+    img.src = imageList[Math.floor(Math.random() * imageList.length)];
 
-    // Tạo vị trí ngẫu nhiên cho bóng bay trong phạm vi của nửa phải màn hình (50vw)
-    balloon.style.left = Math.random() * 45 + 50 + "vw"; // Giới hạn trái phải từ 50% đến 95% của màn hình
+    // Vị trí ngẫu nhiên trong balloon-zone
+    const zoneWidth = balloonZone.clientWidth;
+    const balloonWidth = 140; // phải khớp với CSS
+    const maxLeft = zoneWidth - balloonWidth;
 
-    balloon.style.animationDuration = 6 + Math.random() * 4 + "s"; // Đặt thời gian animation ngẫu nhiên
+    balloon.style.left = Math.random() * maxLeft + "px";
 
+    // Thời gian bay ngẫu nhiên (mượt hơn)
+    const duration = 5 + Math.random() * 2;
+    balloon.style.animationDuration = duration + "s";
+
+    // Gắn ảnh vào bóng
     balloon.appendChild(img);
-    document.getElementById("balloons").appendChild(balloon);
 
-    // Xóa bóng bay sau 10 giây
+    // Gắn bóng vào khu vực
+    balloonZone.appendChild(balloon);
+
+    // Xóa bóng sau khi bay xong (tránh lag)
     setTimeout(() => {
         balloon.remove();
-    }, 10000); // Thời gian tồn tại của bóng bay
+    }, duration * 1000);
 }
 
-// Tạo bóng bay liên tục mỗi 800ms
-setInterval(createBalloon, 800); 
+// Tạo bóng bay liên tục
+setInterval(createBalloon, 900);
