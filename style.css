@@ -10,17 +10,23 @@ body {
     overflow: hidden;
 }
 
-/* Card */
+/* Container chia màn hình */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Card phần bên trái */
 .card {
-    width: 90%;
-    max-width: 900px;
-    height: 420px;
-    margin: auto;
-    margin-top: 80px;
+    flex: 1;
+    max-width: 600px;
+    height: 100%;
     background: #fceeee;
     border-radius: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 40px;
     position: relative;
     z-index: 2;
@@ -75,6 +81,14 @@ body {
 }
 
 /* Balloons */
+#balloons {
+    flex: 1;
+    position: relative;
+    background-color: #f8dada;
+    overflow: hidden;
+}
+
+/* Định dạng quả bóng */
 .balloon {
     position: absolute;
     bottom: -200px;
