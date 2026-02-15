@@ -1,26 +1,25 @@
-const balloonImages = [
-    "anh1.jpg",
-    "anh2.jpg",
-    "anh3.jpg"
-];
+// Đường dẫn đến hình ảnh duy nhất cho tất cả các quả bóng bay
+const balloonImage = "images/anh1.jpg";  // Thay "image1.jpg" thành "anh1.jpg"
 
 function createBalloon() {
     const balloon = document.createElement("div");
     balloon.className = "balloon";
 
     const img = document.createElement("img");
-    img.src = balloonImages[Math.floor(Math.random() * balloonImages.length)];
+    img.src = balloonImage;  // Sử dụng hình ảnh duy nhất cho tất cả bóng bay
 
-    balloon.style.left = Math.random() * 50 + 50 + "vw"; // Bóng bay sẽ chỉ xuất hiện ở phần phải của màn hình
-    balloon.style.animationDuration = 6 + Math.random() * 4 + "s";
+    // Tạo vị trí ngẫu nhiên cho bóng bay ở nửa phải của màn hình
+    balloon.style.left = Math.random() * 50 + 50 + "vw"; // Bóng bay sẽ xuất hiện từ 50% width của màn hình
+    balloon.style.animationDuration = 6 + Math.random() * 4 + "s"; // Đặt thời gian animation ngẫu nhiên
 
     balloon.appendChild(img);
     document.getElementById("balloons").appendChild(balloon);
 
+    // Xóa bóng bay sau 10 giây
     setTimeout(() => {
         balloon.remove();
-    }, 10000);
+    }, 10000); // Thời gian tồn tại của bóng bay
 }
 
-// Tạo bóng bay liên tục
-setInterval(createBalloon, 800);
+// Tạo bóng bay liên tục mỗi 800ms
+setInterval(createBalloon, 800); 
