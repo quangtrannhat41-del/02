@@ -7,29 +7,23 @@ body {
     margin: 0;
     height: 100vh;
     background: #f8dada;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
 }
 
-/* Container chia màn hình thành hai phần */
-.container {
-    display: flex;
-    height: 100vh;
-}
-
-/* Card phần bên trái */
+/* Card */
 .card {
-    flex: 1;
-    max-width: 600px;
-    height: 100%;
+    width: 90%;
+    max-width: 900px;
+    height: 420px;
     background: #fceeee;
     border-radius: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     padding: 40px;
     position: relative;
-    z-index: 2;
+    z-index: 1;
 }
 
 /* Left text */
@@ -47,84 +41,53 @@ body {
     margin-top: 15px;
     background: #d94f4f;
     color: white;
-    display: inline-block;
     padding: 6px 14px;
     border-radius: 20px;
-    font-size: 14px;
+    display: inline-block;
 }
 
-/* Center avatar */
-.center {
-    flex: 1;
-    text-align: center;
-}
-
-.avatar {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 6px solid #d94f4f;
-    margin: auto;
-}
-
-.avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.name {
-    margin-top: 15px;
-    font-size: 18px;
-    color: #d94f4f;
-}
-
-/* Phần Balloons - Phía bên phải */
-#balloons {
+/* Balloon zone (giữa thiệp) */
+.balloon-zone {
     flex: 1;
     position: relative;
-    background-color: #f8dada;
     overflow: hidden;
-    height: 100%;
-    width: 50vw; /* Chiếm nửa phải màn hình */
 }
 
-/* Định dạng quả bóng */
+/* Balloon */
 .balloon {
     position: absolute;
-    bottom: -120px; /* Đảm bảo bóng bay bắt đầu từ phía dưới */
-    width: 90px;
+    bottom: -180px;
+    width: 140px;               /* TO – RÕ */
+    z-index: 10;                /* NẰM TRƯỚC THIỆP */
     animation: flyUp linear forwards;
-    z-index: 1;
 }
 
 .balloon img {
     width: 100%;
-    height: 120px;
+    height: 160px;
     object-fit: cover;
     border-radius: 50%;
-    border: 3px solid #ff6b6b;
+    border: 4px solid #ff6b6b;
     background: white;
 }
 
+/* dây bóng */
 .balloon::after {
     content: "";
-    width: 2px;
-    height: 60px;
-    background: #aaa;
     display: block;
+    width: 2px;
+    height: 70px;
+    background: #999;
     margin: auto;
 }
 
-/* Animation cho bóng bay */
 @keyframes flyUp {
     from {
         transform: translateY(0);
         opacity: 1;
     }
     to {
-        transform: translateY(-120vh); /* Điều chỉnh lại giá trị để đảm bảo bóng bay không ra ngoài màn hình */
+        transform: translateY(-520px);
         opacity: 0;
     }
 }
