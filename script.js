@@ -1,19 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* ===== CONFIG ===== */
+    /* ===== IMAGE LIST (LOCAL – SAFE) ===== */
     const IMAGE_URLS = [
-    "images/anh1.jpg",
-    "images/anh2.jpg",
-    "images/anh3.jpg",
-    "images/anh4.jpg",
-    "images/anh5.jpg",
-    "images/anh6.jpg",
-    "images/anh7.jpg",
-    "images/anh8.jpg",
-    "images/anh9.jpg",
-    "images/anh10.jpg",
-    "images/anh11.jpg",
-    "images/anh12.jpg"
+        "images/anh1.jpg",
+        "images/anh2.jpg",
+        "images/anh3.jpg",
+        "images/anh4.jpg",
+        "images/anh5.jpg",
+        "images/anh6.jpg",
+        "images/anh7.jpg",
+        "images/anh8.jpg",
+        "images/anh9.jpg",
+        "images/anh10.jpg",
+        "images/anh11.jpg",
+        "images/anh12.jpg"
     ];
 
     const MAX_BALLOONS = 4;
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const img = document.createElement("img");
         balloon.appendChild(img);
 
-        balloon.onclick = () => showZoom(img.src);
+        balloon.onclick = () => zoom(img.src);
         return balloon;
     }
 
@@ -74,8 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setInterval(spawnBalloon, SPAWN_INTERVAL);
 
-    /* ===== ZOOM ===== */
-    function showZoom(src) {
+    /* ===== ZOOM IMAGE ===== */
+    function zoom(src) {
         const overlay = document.createElement("div");
         overlay.className = "zoom";
 
