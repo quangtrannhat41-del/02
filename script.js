@@ -20,10 +20,8 @@ let balloonCount = 0; // Biến theo dõi số lượng bóng bay
 // Giới hạn tối đa bóng bay hiển thị cùng lúc
 const MAX_BALLOONS = 10;
 let lastBalloonTime = 0; // Thời gian tạo bóng bay cuối cùng (giới hạn tần suất tạo bóng bay)
+const MIN_INTERVAL = 1500; // Thời gian tạo bóng bay tối thiểu (1.5 giây)
 
-const MIN_INTERVAL = 2000; // Thời gian tạo bóng bay tối thiểu (2 giây)
-
-// Tạo bóng bay mới
 function createBalloon() {
     // Kiểm tra số lượng bóng bay hiện tại
     if (balloonCount >= MAX_BALLOONS) return;
@@ -41,7 +39,7 @@ function createBalloon() {
         const maxLeft = zoneWidth - BALLOON_SIZE - padding;
 
         balloon.style.left = Math.random() * maxLeft + "px";
-        balloon.style.animationDuration = (9 + Math.random() * 3) + "s";
+        balloon.style.animationDuration = (7 + Math.random() * 4) + "s";
 
         balloon.appendChild(img);
         zone.appendChild(balloon);
